@@ -27,8 +27,8 @@ router.get("/tipo/:id", async (req, res, next) => {
   }
 });
 router.post("/nuevo-tipo", async (req, res, next) => {
-  const { nuevoTipo } = req.body;
   try {
+    const nuevoTipo = req.body;
     const nuevoTipoBD = await crearTipo(nuevoTipo);
     res.status(201).json(nuevoTipoBD);
   } catch (err) {
@@ -36,8 +36,8 @@ router.post("/nuevo-tipo", async (req, res, next) => {
   }
 });
 router.put("/tipo/:id", async (req, res, next) => {
-  const { tipoModificado } = req.body;
   try {
+    const tipoModificado = req.body;
     const tipoUpdated = await modificarTipo(tipoModificado);
     res.json(tipoUpdated);
   } catch (err) {
@@ -45,8 +45,8 @@ router.put("/tipo/:id", async (req, res, next) => {
   }
 });
 router.delete("/tipo/:id", async (req, res, next) => {
-  const { id } = req.params;
   try {
+    const { id } = req.params;
     const tipoBorrado = await borrarTipo(id);
     res.json(tipoBorrado);
   } catch (err) {

@@ -55,7 +55,11 @@ const modificarTipo = async (tipoModificado) => {
 };
 const borrarTipo = async (idTipo) => {
   try {
-    const tipoBorrado = await Tipo.findByIdAndDelete(idTipo);
+    const tipoBorrado = await Tipo.deleteOne({ id: idTipo });
+    if (!tipoBorrado.ok === 1) {
+      const nuevoError = new Error("No se ha podido borrar el tipo");
+      throw nuevoError;
+    }
     return tipoBorrado;
   } catch (err) {
     const nuevoError = new Error("No se ha podido borrar el tipo");
