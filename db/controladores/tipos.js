@@ -42,8 +42,8 @@ const crearTipo = async (nuevoTipo) => {
 };
 const modificarTipo = async (tipoModificado) => {
   try {
-    const tipoModificadoBD = await Tipo.findByIdAndUpdate(
-      tipoModificado._id,
+    const tipoModificadoBD = await Tipo.updateOne(
+      { id: tipoModificado.id },
       tipoModificado
     );
     return tipoModificadoBD;
